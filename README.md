@@ -1,7 +1,7 @@
 # Video-MME-v2: Towards the Next Stage in Video Understanding Evaluation
 
-[![Video-MME-v2](https://img.shields.io/badge/Dataset-Video--MME--v2-blue)](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2)
-[![Video-MME-v2-paper](https://img.shields.io/badge/Video--MME--v2-paper-green)](https://arxiv.org/abs/2604.xxxxx)  
+[![Video-MME-v2-dataset](https://img.shields.io/badge/Dataset-Video--MME--v2-blue)](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2)
+[![Video-MME-v2-paper](https://img.shields.io/badge/Paper-Video--MME--v2-green)](https://arxiv.org/abs/2604.xxxxx)  
 ![Gemini](https://img.shields.io/badge/Model-Gemini-green) 
 ![GPT](https://img.shields.io/badge/Model-GPT-green) 
 
