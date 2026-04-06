@@ -1,8 +1,7 @@
 # Video-MME-v2: Towards the Next Stage in Video Understanding Evaluation
 
 [![Video-MME-v2](https://img.shields.io/badge/Dataset-Video--MME--v2-blue)](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2)
-[![Video-MME-v2-paper](https://img.shields.io/badge/Video--MME--v2-paper-green)](https://arxiv.org/abs/2604.xxxxx) 
-![Multi-Modal](https://img.shields.io/badge/Task-Multi--Modal-red)  
+[![Video-MME-v2-paper](https://img.shields.io/badge/Video--MME--v2-paper-green)](https://arxiv.org/abs/2604.xxxxx)  
 ![Gemini](https://img.shields.io/badge/Model-Gemini-green) 
 ![GPT](https://img.shields.io/badge/Model-GPT-green) 
 
@@ -16,7 +15,7 @@
 ---
 
 ## 🔥 News
-* **`2026.04.07`** 🌟 We now introduce Video-MME-v2, built upon over **3,300 human-hours** annotation. At this key moment in the evolution of video understanding, we aim to share our thinking on the next generation of evaluation paradigms and to help drive higher-quality technical iteration for video understanding models.
+* **`2026.04.07`** 🌟 We are very proud to launch Video-MME-v2, built upon over **3,300 human-hours** annotation. At this key moment in the evolution of video understanding, we aim to share our thinking on the next generation of evaluation paradigms and to help drive higher-quality technical iteration for video understanding models.
 
 ## Contents
 
