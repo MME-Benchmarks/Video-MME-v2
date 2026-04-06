@@ -2,8 +2,8 @@
 
 [![Video-MME-v2-dataset](https://img.shields.io/badge/Dataset-Video--MME--v2-blue)](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2)
 [![Video-MME-v2-paper](https://img.shields.io/badge/Paper-Video--MME--v2-green)](https://arxiv.org/abs/2604.xxxxx)  
-![Gemini](https://img.shields.io/badge/Model-Gemini-green) 
-![GPT](https://img.shields.io/badge/Model-GPT-green) 
+![Gemini](https://img.shields.io/badge/Model-Gemini-red) 
+![GPT](https://img.shields.io/badge/Model-GPT-red) 
 
 
 <p align="center">
