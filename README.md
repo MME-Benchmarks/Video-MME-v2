@@ -7,7 +7,7 @@
 
 
 <p align="center">
-    <img src="Imgs/logo-v1.png" width="100%" height="100%">
+    <img src="Imgs/logo.png" width="100%" height="100%">
 </p>
 
 <font size=7><div align='center' > [[🍎 Project Page](https://video-mme-v2.netlify.app/)] [[📖 Paper](https://github.com/MME-Benchmarks/Video-MME-v2)] [[🤗 Dataset](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2)] [[🏆 Leaderboard](https://video-mme-v2.netlify.app/#leaderboard)]  </div></font>
