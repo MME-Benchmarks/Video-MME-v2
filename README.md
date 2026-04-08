@@ -180,9 +180,9 @@ H. Cannot be determined.
 
 📍 **Evaluation with VLMEvalKit & LMMs-Eval**:
 
-We are actively integrating Video-MME-v2 into both [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) and [LMMs-Eval](https://github.com/EvolvingLMMs-Lab/lmms-eval). Support for both toolkits will be available within this week. Stay tuned!
+Video-MME-v2 is already supported in [VLMEvalKit](https://github.com/open-compass/VLMEvalKit). We are also actively working on integrating it into [LMMs-Eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) — stay tuned!
 
-Once ready, [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) will provide built-in support for Video-MME-v2. It automatically downloads the dataset from Hugging Face, extracts video frames, builds prompts with the correct format, and computes the grouped non-linear scores.
+[VLMEvalKit](https://github.com/open-compass/VLMEvalKit) provides built-in support for Video-MME-v2. It automatically downloads the dataset from Hugging Face, extracts video frames, builds prompts with the correct format, and computes the grouped non-linear scores.
 
 ```bash
 # Install VLMEvalKit
