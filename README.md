@@ -1,7 +1,7 @@
 # Video-MME-v2: Towards the Next Stage in Video Understanding Evaluation
 
 [![Video-MME-v2-dataset](https://img.shields.io/badge/Dataset-Video--MME--v2-blue)](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2)
-[![Video-MME-v2-paper](https://img.shields.io/badge/Paper-Video--MME--v2-green)](https://arxiv.org/abs/2604.xxxxx)  
+[![Video-MME-v2-paper](https://img.shields.io/badge/Paper-Video--MME--v2-green)](https://arxiv.org/abs/2604.05015)  
 ![Gemini](https://img.shields.io/badge/Model-Gemini-red) 
 ![GPT](https://img.shields.io/badge/Model-GPT-red) 
 
@@ -10,7 +10,7 @@
     <img src="Imgs/logo.png" width="100%" height="100%">
 </p>
 
-<font size=7><div align='center' > [[🍎 Project Page](https://video-mme-v2.netlify.app/)] [[📖 Paper](https://github.com/MME-Benchmarks/Video-MME-v2/blob/main/Video_MME_v2-TechReport.pdf)] [[🤗 Dataset](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2)] [[🏆 Leaderboard](https://video-mme-v2.netlify.app/#leaderboard)]  </div></font>
+<font size=7><div align='center' > [[🍎 Project Page](https://video-mme-v2.netlify.app/)] [[📖 Paper](https://arxiv.org/pdf/2604.05015)] [[🤗 Dataset](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2)] [[🏆 Leaderboard](https://video-mme-v2.netlify.app/#leaderboard)]  </div></font>
 
 ---
 
@@ -180,9 +180,9 @@ H. Cannot be determined.
 
 📍 **Evaluation with VLMEvalKit & LMMs-Eval**:
 
-We are actively integrating Video-MME-v2 into both [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) and [LMMs-Eval](https://github.com/EvolvingLMMs-Lab/lmms-eval). Support for both toolkits will be available within this week. Stay tuned!
+Video-MME-v2 is already supported in [VLMEvalKit](https://github.com/open-compass/VLMEvalKit). We are also actively working on integrating it into [LMMs-Eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) — stay tuned!
 
-Once ready, [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) will provide built-in support for Video-MME-v2. It automatically downloads the dataset from Hugging Face, extracts video frames, builds prompts with the correct format, and computes the grouped non-linear scores.
+[VLMEvalKit](https://github.com/open-compass/VLMEvalKit) provides built-in support for Video-MME-v2. It automatically downloads the dataset from Hugging Face, extracts video frames, builds prompts with the correct format, and computes the grouped non-linear scores.
 
 ```bash
 # Install VLMEvalKit
