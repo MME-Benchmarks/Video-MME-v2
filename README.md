@@ -93,12 +93,13 @@ Our dataset is uniquely structured into groups of 4 questions, targeting either 
 ```
 Video-MME-v2 is only used for academic research. Commercial use in any form is prohibited.
 The copyright of all videos belongs to the video owners.
+The content of the video does not reflect the views or positions of the researchers.
 If there is any infringement in Video-MME-v2, please email bradyfu24@gmail.com and we will remove it immediately.
 Without prior approval, you cannot distribute, publish, copy, disseminate, or modify Video-MME-v2 in whole or in part.
 You must strictly comply with the above restrictions.
 ```
 
-The dataset is collected by the team from Nanjing University. You can find on Hugging Face: [MME-Benchmarks/Video-MME-v2](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2).
+You can find the dataset on Hugging Face: [MME-Benchmarks/Video-MME-v2](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2).
 
 It contains **800 videos** (in 40 zip archives), **800 word-level subtitle files** (JSONL format with timestamps), and a `test.parquet` with **3,200 human-annotated question-answer pairs** (4 questions per video, organized into groups).
 
