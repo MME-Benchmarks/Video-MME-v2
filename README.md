@@ -98,7 +98,7 @@ Without prior approval, you cannot distribute, publish, copy, disseminate, or mo
 You must strictly comply with the above restrictions.
 ```
 
-The dataset is hosted on Hugging Face: [MME-Benchmarks/Video-MME-v2](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2).
+The dataset is collected by the team from Nanjing University. You can find on Hugging Face: [MME-Benchmarks/Video-MME-v2](https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2).
 
 It contains **800 videos** (in 40 zip archives), **800 word-level subtitle files** (JSONL format with timestamps), and a `test.parquet` with **3,200 human-annotated question-answer pairs** (4 questions per video, organized into groups).
 
