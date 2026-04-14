@@ -358,6 +358,13 @@ We conduct systematic evaluations on leading video MLLMs, revealing several crit
 If you find our work helpful for your research, please consider citing our work.   
 
 ```bibtex
+@article{fu2026video,
+  title={Video-MME-v2: Towards the Next Stage in Benchmarks for Comprehensive Video Understanding},
+  author={Fu, Chaoyou and Yuan, Haozhi and Dong, Yuhao and Zhang, Yi-Fan and Shen, Yunhang and Hu, Xiaoxing and Li, Xueying and Su, Jinsen and Long, Chengwu and Xie, Xiaoyao and others},
+  journal={arXiv preprint arXiv:2604.05015},
+  year={2026}
+}
+
 @inproceedings{fu2025video,
   title={Video-mme: The first-ever comprehensive evaluation benchmark of multi-modal llms in video analysis},
   author={Fu, Chaoyou and Dai, Yuhan and Luo, Yongdong and Li, Lei and Ren, Shuhuai and Zhang, Renrui and Wang, Zihan and Zhou, Chenyu and Shen, Yunhang and Zhang, Mengdan and others},
