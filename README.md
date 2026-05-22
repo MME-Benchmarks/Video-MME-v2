@@ -15,6 +15,7 @@
 ---
 
 ## 🔥 News
+* **`2026.05.22`** 🔧 Updated the standalone evaluation script to report both grouped score and accuracy. Task types are now available for Q1-Q3 in logic groups.
 * **`2026.04.07`** 🌟 We are very proud to launch Video-MME-v2, built upon over **3,300 human-hours** annotation. At this key moment in the evolution of video understanding, we aim to share our thinking on the next generation of evaluation paradigms and to help drive higher-quality technical iteration for video understanding models.
 
 ## Contents
@@ -402,4 +403,3 @@ Explore our related researches:
 -  **[MME-RealWorld]** [MME-RealWorld: Could Your Multimodal LLM Challenge High-Resolution Real-World Scenarios that are Difficult for Humans?](https://arxiv.org/pdf/2408.13257)
 -  **[MME-Survey]** [MME-Survey: A Comprehensive Survey on Evaluation of Multimodal LLMs](https://arxiv.org/pdf/2411.15296)
 -  **[Awesome-MLLM]** [A Survey on Multimodal Large Language Models](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models)
-

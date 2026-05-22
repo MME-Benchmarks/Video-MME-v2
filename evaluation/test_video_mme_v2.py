@@ -312,19 +312,36 @@ def cal_logic(scores, group_structure):
             last_correct_idx += 1
     else:
         raise ValueError(f'Unknown group_structure_list: {group_structure_list}')
-    return score_map.get(last_correct_idx + 1, 0.0)
+    return score_map.get(last_correct_idx + 1, 0.0), sum(scores) * 25.0
 
 
-def get_final_rating(data):
-    """Compute final rating from scored DataFrame."""
+def _average_dict(data):
+    return {key: sum(vals) / len(vals) if vals else 0.0 for key, vals in data.items()}
+
+
+def get_final_metrics(data):
+    """Compute final score and accuracy from scored DataFrame."""
     all_groups = [[] for _ in range((len(data) + 1) // 4)]
-    final_rating = {
-        'level_1': [], 'level_2': [], 'level_3': [],
-        'relevance_score': [], 'relevance_linear_score': [],
-        'logic_score': [], 'total': [],
+    final_score = {
+        'overall_score': [],
+        'relevance_score': [],
+        'logic_score': [],
+        'level_1_score': [],
+        'level_2_score': [],
+        'level_3_score': [],
     }
-    second_head_rating = {}
-    third_head_rating = {}
+    final_acc = {
+        'overall_acc': [],
+        'relevance_acc': [],
+        'logic_acc': [],
+        'level_1_acc': [],
+        'level_2_acc': [],
+        'level_3_acc': [],
+    }
+    second_head_score = {}
+    second_head_acc = {}
+    third_head_score = {}
+    third_head_acc = {}
 
     for i in range(len(data)):
         level = data.iloc[i]['level']
@@ -341,43 +358,37 @@ def get_final_rating(data):
         group_structure = group[-1][2]
         second_head = group[-1][4]
         third_head = group[-1][5]
-        scores = [item[3] for item in group]
+        scores = [1 if item[3] == 1 else 0 for item in group]
 
         if group_type == 'relevance':
-            exp_score, linear_score = cal_relevance(scores)
-            final_rating['relevance_score'].append(exp_score)
-            final_rating['relevance_linear_score'].append(linear_score)
+            group_score, group_acc = cal_relevance(scores)
+            final_score['relevance_score'].append(group_score)
+            final_acc['relevance_acc'].append(group_acc)
         elif group_type == 'logic':
-            exp_score = cal_logic(scores, group_structure)
-            final_rating['logic_score'].append(exp_score)
+            group_score, group_acc = cal_logic(scores, group_structure)
+            final_score['logic_score'].append(group_score)
+            final_acc['logic_acc'].append(group_acc)
         else:
             raise ValueError(f'Unknown group_type: {group_type}')
 
         if level is not None and str(level) != 'None':
-            final_rating[f'level_{int(level)}'].append(exp_score)
-        final_rating['total'].append(exp_score)
+            final_score[f'level_{int(level)}_score'].append(group_score)
+            final_acc[f'level_{int(level)}_acc'].append(group_acc)
+        final_score['overall_score'].append(group_score)
+        final_acc['overall_acc'].append(group_acc)
 
-        if second_head not in second_head_rating:
-            second_head_rating[second_head] = []
-        second_head_rating[second_head].append(exp_score)
-        if third_head not in third_head_rating:
-            third_head_rating[third_head] = []
-        third_head_rating[third_head].append(exp_score)
-
-    for key in final_rating:
-        vals = final_rating[key]
-        final_rating[key] = sum(vals) / len(vals) if vals else 0.0
-    for key in second_head_rating:
-        vals = second_head_rating[key]
-        second_head_rating[key] = sum(vals) / len(vals) if vals else 0.0
-    for key in third_head_rating:
-        vals = third_head_rating[key]
-        third_head_rating[key] = sum(vals) / len(vals) if vals else 0.0
+        second_head_score.setdefault(second_head, []).append(group_score)
+        second_head_acc.setdefault(second_head, []).append(group_acc)
+        third_head_score.setdefault(third_head, []).append(group_score)
+        third_head_acc.setdefault(third_head, []).append(group_acc)
 
     return {
-        'final_rating': final_rating,
-        'second_head_rating': second_head_rating,
-        'third_head_rating': third_head_rating,
+        'final_score': _average_dict(final_score),
+        'final_acc': _average_dict(final_acc),
+        'second_head_score': _average_dict(second_head_score),
+        'second_head_acc': _average_dict(second_head_acc),
+        'third_head_score': _average_dict(third_head_score),
+        'third_head_acc': _average_dict(third_head_acc),
     }
 
 
@@ -385,7 +396,7 @@ def get_final_rating(data):
 # Evaluation
 # ──────────────────────────────────────────────
 def evaluate(data, output_path):
-    """Score predictions and compute final rating."""
+    """Score predictions and compute final metrics."""
     n_total = len(data)
     n_empty = data['prediction'].isna().sum() + (data['prediction'] == '').sum()
 
@@ -404,32 +415,53 @@ def evaluate(data, output_path):
         simple_acc = valid['score'].mean() * 100
         print(f'Simple accuracy (valid only): {simple_acc:.2f}%')
 
-    rating = get_final_rating(data)
+    metrics = get_final_metrics(data)
 
-    fr = rating['final_rating']
-    print(f"\n{'Metric':<30} {'Score':>8}")
-    print('-' * 40)
-    for k, v in fr.items():
-        print(f'{k:<30} {v:>8.2f}')
+    final_score = metrics['final_score']
+    final_acc = metrics['final_acc']
+    print(f"\n{'Metric':<30} {'Score':>8} {'Acc':>8}")
+    print('-' * 50)
+    for score_key, score_value in final_score.items():
+        acc_key = score_key.replace('_score', '_acc')
+        acc_value = final_acc.get(acc_key, 0.0)
+        print(f'{score_key:<30} {score_value:>8.2f} {acc_value:>8.2f}')
 
-    sh = rating['second_head_rating']
-    if any(str(v) != 'None' for v in sh.keys()):
-        print(f"\n{'Second Head':<30} {'Score':>8}")
-        print('-' * 40)
-        for k, v in sh.items():
-            print(f'{str(k):<30} {v:>8.2f}')
+    second_head_score = metrics['second_head_score']
+    second_head_acc = metrics['second_head_acc']
+    if any(str(v) != 'None' for v in second_head_score.keys()):
+        print(f"\n{'Second Head':<30} {'Score':>8} {'Acc':>8}")
+        print('-' * 50)
+        for k, v in second_head_score.items():
+            print(f'{str(k):<30} {v:>8.2f} {second_head_acc.get(k, 0.0):>8.2f}')
 
-    th = rating['third_head_rating']
-    if any(str(v) != 'None' for v in th.keys()):
-        print(f"\n{'Third Head':<30} {'Score':>8}")
-        print('-' * 40)
-        for k, v in th.items():
-            print(f'{str(k):<30} {v:>8.2f}')
+    third_head_score = metrics['third_head_score']
+    third_head_acc = metrics['third_head_acc']
+    if any(str(v) != 'None' for v in third_head_score.keys()):
+        print(f"\n{'Third Head':<30} {'Score':>8} {'Acc':>8}")
+        print('-' * 50)
+        for k, v in third_head_score.items():
+            print(f'{str(k):<30} {v:>8.2f} {third_head_acc.get(k, 0.0):>8.2f}')
+
+    rating = {
+        'final_rating': metrics['final_score'],
+        'second_head_rating': metrics['second_head_score'],
+        'third_head_rating': metrics['third_head_score'],
+    }
+    acc = {
+        'final_acc': metrics['final_acc'],
+        'second_head_acc': metrics['second_head_acc'],
+        'third_head_acc': metrics['third_head_acc'],
+    }
 
     rating_path = output_path.replace('.tsv', '_rating.json')
     with open(rating_path, 'w') as f:
         json.dump(rating, f, indent=2, default=str)
     print(f'\nRating saved to {rating_path}')
+
+    acc_path = output_path.replace('.tsv', '_acc.json')
+    with open(acc_path, 'w') as f:
+        json.dump(acc, f, indent=2, default=str)
+    print(f'Acc saved to {acc_path}')
 
     score_path = output_path.replace('.tsv', '_scored.tsv')
     data.to_csv(score_path, sep='\t', index=False)
