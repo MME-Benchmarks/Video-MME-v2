@@ -15,6 +15,7 @@
 ---
 
 ## 🔥 News
+* **`2026.08.05`** 🚀 EvalScope now supports one-command evaluation for Video-MME-v2 with OpenAI-compatible model endpoints and standardized reports. See the [EvalScope guide](https://evalscope.readthedocs.io/en/latest/benchmarks/videomme_v2.html).
 * **`2026.05.22`** 🔧 Updated the standalone evaluation script to report both grouped score and accuracy. Task types are now available for Q1-Q3 in logic groups.
 * **`2026.04.07`** 🌟 We are very proud to launch Video-MME-v2, built upon over **3,300 human-hours** annotation. At this key moment in the evolution of video understanding, we aim to share our thinking on the next generation of evaluation paradigms and to help drive higher-quality technical iteration for video understanding models.
 
@@ -217,6 +218,21 @@ All available dataset configurations:
 | `Video-MME-v2_64frame_reasoning` | 64 | ✗ | ✓ |
 | `Video-MME-v2_64frame_reasoning_subs` | 64 | concat | ✓ |
 | `Video-MME-v2_64frame_reasoning_subs_interleave` | 64 | interleave | ✓ |
+
+📍 **Evaluation with EvalScope**:
+
+[EvalScope](https://github.com/modelscope/evalscope) provides a community-maintained integration for running Video-MME-v2 against OpenAI-compatible model endpoints, while saving predictions, scores, and reports in a standardized format. This can be useful when users want a lightweight smoke test or a unified evaluation workflow across multiple benchmarks.
+
+```bash
+evalscope eval \
+  --model YOUR_MODEL \
+  --api-url OPENAI_API_COMPAT_URL \
+  --api-key EMPTY_TOKEN \
+  --datasets videomme_v2 \
+  --limit 10
+```
+
+EvalScope uses the `MME-Benchmarks/Video-MME-v2` dataset with the `test` split and the default `all` subset. By default it reads public video URLs for lightweight runs; users can configure the adapter to use the official MP4 archives or include subtitles when needed. See the [EvalScope guide](https://evalscope.readthedocs.io/en/latest/benchmarks/videomme_v2.html) for details.
 
 📍 **Standalone Evaluation with Transformers**:
 
